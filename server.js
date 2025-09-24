@@ -16,7 +16,12 @@ const app = express()
 const PORT = process.env.PORT || 8000
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors())
+app.use(
+  cors({
+    origin: "https://silver-mochi-48223e.netlify.app",
+    credentials: true, // agar cookies/auth bhejni ho
+  })
+);
 app.use('/api/auth',authRouter)
 app.use('/api/admin/products',adminProductRouter)
 app.use('/api/admin/orders',adminOrderRouter)
